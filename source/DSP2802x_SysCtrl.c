@@ -274,21 +274,21 @@ void InitPeripheralClocks(void)
 // This function is not written to be an example of efficient code.
 
    SysCtrlRegs.PCLKCR0.bit.ADCENCLK = 1;       // ADC
-   SysCtrlRegs.PCLKCR3.bit.COMP1ENCLK = 0;     // COMP1
-   SysCtrlRegs.PCLKCR3.bit.COMP2ENCLK = 0;     // COMP2
+   SysCtrlRegs.PCLKCR3.bit.COMP1ENCLK = 1;     // COMP1
+   SysCtrlRegs.PCLKCR3.bit.COMP2ENCLK = 1;     // COMP2
    SysCtrlRegs.PCLKCR3.bit.CPUTIMER0ENCLK = 1; // CPU Timer-0
    SysCtrlRegs.PCLKCR3.bit.CPUTIMER1ENCLK = 1; // CPU Timer-1
    SysCtrlRegs.PCLKCR3.bit.CPUTIMER2ENCLK = 1; // CPU Timer-2
-   SysCtrlRegs.PCLKCR1.bit.ECAP1ENCLK = 0;     // eCAP1
+   SysCtrlRegs.PCLKCR1.bit.ECAP1ENCLK = 1;     // eCAP1
    SysCtrlRegs.PCLKCR1.bit.EPWM1ENCLK = 1;     // EPWM1
    SysCtrlRegs.PCLKCR1.bit.EPWM2ENCLK = 1;     // EPWM2
    SysCtrlRegs.PCLKCR1.bit.EPWM3ENCLK = 1;     // EPWM3
-   SysCtrlRegs.PCLKCR1.bit.EPWM4ENCLK = 0;     // EPWM4
+   SysCtrlRegs.PCLKCR1.bit.EPWM4ENCLK = 1;     // EPWM4
    SysCtrlRegs.PCLKCR3.bit.GPIOINENCLK = 1;    // GPIO
-   SysCtrlRegs.PCLKCR0.bit.HRPWMENCLK=0;       // HRPWM
-   SysCtrlRegs.PCLKCR0.bit.I2CAENCLK = 0;      // I2C
+   SysCtrlRegs.PCLKCR0.bit.HRPWMENCLK=1;       // HRPWM
+   SysCtrlRegs.PCLKCR0.bit.I2CAENCLK = 1;      // I2C
    SysCtrlRegs.PCLKCR0.bit.SCIAENCLK = 1;      // SCI-A
-   SysCtrlRegs.PCLKCR0.bit.SPIAENCLK = 0;      // SPI-A
+   SysCtrlRegs.PCLKCR0.bit.SPIAENCLK = 1;      // SPI-A
 
    SysCtrlRegs.PCLKCR0.bit.TBCLKSYNC = 1;      // Enable TBCLK within the EPWM
 

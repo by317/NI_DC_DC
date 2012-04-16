@@ -128,9 +128,6 @@ void main()
 	initVariables();
 	
 	DINT;
-	ms_delay(1);
-	InitAdc();
-	SetupAdc();
 	InitSysCtrl();
 	InitPieCtrl();
 	IER = 0x0000;
@@ -138,6 +135,8 @@ void main()
 	MemCopy(&RamfuncsLoadStart, &RamfuncsLoadEnd, &RamfuncsRunStart);
 	InitPieVectTable();
 	easyDSP_SCI_Init();
+	InitAdc();
+	SetupAdc();
 
 	InitEPwm4();
 	pwm_setup();
@@ -157,11 +156,11 @@ void main()
 	y = 5;
 	for(;;)
 	{
-		if(delay_flag)
-		{
-			ms_delay(10000);
-			delay_flag = 0;
-		}
+//		if(delay_flag)
+//		{
+//			ms_delay(10000);
+//			delay_flag = 0;
+//		}
 	}
 }
 
@@ -260,7 +259,7 @@ void pwm_setup()
 	EPwm4Regs.ETSEL.bit.INTSEL = 0x1;
 	EPwm4Regs.ETPS.bit.INTPRD = 0x1;
 	EPwm4Regs.ETSEL.bit.SOCAEN = 1;
-	EPwm4Regs.ETSEL.bit.SOCASEL = ET_CTRD_CMPA;
+	EPwm4Regs.ETSEL.bit.SOCASEL = ET_CTRU_CMPA;
 	EPwm4Regs.ETPS.bit.SOCAPRD = 0x1;
 }
 
@@ -320,7 +319,7 @@ void SetupAdc(void)
 	EALLOW;
 	AdcRegs.ADCSAMPLEMODE.bit.SIMULEN0 = 0;
 	//Input Voltage Sampling on SOC0
-	AdcRegs.ADCSOC0CTL.bit.TRIGSEL = 0x07;
+	AdcRegs.ADCSOC0CTL.bit.TRIGSEL = 0x0B;
 	AdcRegs.ADCSOC0CTL.bit.CHSEL = 0xE;
 	AdcRegs.ADCSOC0CTL.bit.ACQPS = 0x6;	
 	//Output Voltage Sampling on SOC1
@@ -328,7 +327,7 @@ void SetupAdc(void)
 //	AdcRegs.ADCSOC1CTL.bit.CHSEL = 0x0;
 //	AdcRegs.ADCSOC1CTL.bit.ACQPS = 0x6;
 //	//Input Current Sampling on SOC4
-	AdcRegs.ADCSOC1CTL.bit.TRIGSEL = 0x07;
+	AdcRegs.ADCSOC1CTL.bit.TRIGSEL = 0x0B;
 	AdcRegs.ADCSOC1CTL.bit.CHSEL = 0x2;
 	AdcRegs.ADCSOC1CTL.bit.ACQPS = 0x6;
 	EDIS;
